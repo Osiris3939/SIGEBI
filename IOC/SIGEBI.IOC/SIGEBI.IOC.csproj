@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\SIGEBI.Domain\SIGEBI.Domain.csproj" />
+    <ProjectReference Include="..\..\Application\SIGEBI.Application\SIGEBI.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\SIGEBI.Persistence\SIGEBI.Persistence.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\SIGEBI.Infrastructure\SIGEBI.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+</Project>

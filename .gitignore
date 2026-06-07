@@ -1,0 +1,16 @@
+# Build folders
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio / Rider / VS Code files
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+.idea/
+.vscode/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+[Dd]s_[Ss]tore
