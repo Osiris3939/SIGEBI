@@ -10,5 +10,7 @@ namespace SIGEBI.Domain.Entities.Loan
         public int PrestamoId { get; set; }
         public DateTime FechaEntrega { get; set; }
         public string Observaciones { get; set; }
+
+        public virtual Prestamo Prestamo { get; set; }
     }
 }

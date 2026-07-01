@@ -1,12 +1,9 @@
 using System;
-using SIGEBI.Domain.Base;
-using SIGEBI.Domain.Entities.Configuration;
-using SIGEBI.Domain.Entities.Library;
 
-namespace SIGEBI.Domain.Entities.Loan
+namespace SIGEBI.Application.DTOs
 {
-    // Representa el prestamo de un ejemplar a un usuario
-    public class Prestamo : AuditEntity
+    // DTO de prestamo
+    public class PrestamoDto
     {
         public int Id { get; set; }
         public int EjemplarId { get; set; }
@@ -15,8 +12,5 @@ namespace SIGEBI.Domain.Entities.Loan
         public DateTime FechaDevolucionPactada { get; set; }
         public DateTime? FechaDevolucionReal { get; set; }
         public string EstadoPrestamo { get; set; }
-
-        public virtual Ejemplar Ejemplar { get; set; }
-        public virtual Usuario Usuario { get; set; }
     }
 }

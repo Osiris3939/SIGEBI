@@ -9,5 +9,7 @@ namespace SIGEBI.Domain.Entities.Library
         public string CodigoBarra { get; set; }
         public string EstadoFisico { get; set; }
         public int LibroId { get; set; }
+
+        public virtual Libro Libro { get; set; }
     }
 }

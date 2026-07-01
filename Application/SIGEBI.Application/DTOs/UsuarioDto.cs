@@ -1,10 +1,7 @@
-using System;
-using SIGEBI.Domain.Base;
-
-namespace SIGEBI.Domain.Entities.Configuration
+namespace SIGEBI.Application.DTOs
 {
-    // Representa un usuario del sistema
-    public class Usuario : AuditEntity
+    // DTO de usuario
+    public class UsuarioDto
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -13,8 +10,6 @@ namespace SIGEBI.Domain.Entities.Configuration
         public string Password { get; set; }
         public int RolUsuarioId { get; set; }
         public int TipoUsuarioId { get; set; }
-
-        public virtual RolUsuario RolUsuario { get; set; }
-        public virtual TipoUsuario TipoUsuario { get; set; }
+        public string NombreCompleto => $"{Nombre} {Apellido}";
     }
 }

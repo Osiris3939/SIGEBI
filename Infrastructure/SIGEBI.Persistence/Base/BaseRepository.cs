@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SIGEBI.Domain.Repository;
 using SIGEBI.Persistence.Context;
 
@@ -16,29 +17,36 @@ namespace SIGEBI.Persistence.Base
             _context = context;
         }
 
-        public virtual Task<T> GetByIdAsync(int id)
+        public virtual async Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public virtual Task<IEnumerable<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().ToListAsync();
         }
 
-        public virtual Task AddAsync(T entity)
+        public virtual async Task AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _context.Set<T>().AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public virtual Task UpdateAsync(T entity)
+        public virtual async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public virtual Task DeleteAsync(int id)
+        public virtual async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await GetByIdAsync(id);
+            if (entity != null)
+            {
+                _context.Set<T>().Remove(entity);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

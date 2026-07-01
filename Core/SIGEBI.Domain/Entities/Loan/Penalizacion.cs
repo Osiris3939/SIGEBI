@@ -1,5 +1,6 @@
 using System;
 using SIGEBI.Domain.Base;
+using SIGEBI.Domain.Entities.Configuration;
 
 namespace SIGEBI.Domain.Entities.Loan
 {
@@ -12,5 +13,8 @@ namespace SIGEBI.Domain.Entities.Loan
         public decimal MontoMulta { get; set; }
         public string Motivo { get; set; }
         public bool Pagada { get; set; }
+
+        public virtual Usuario Usuario { get; set; }
+        public virtual Prestamo Prestamo { get; set; }
     }
 }

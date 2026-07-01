@@ -1,5 +1,6 @@
 using System;
 using SIGEBI.Domain.Base;
+using SIGEBI.Domain.Entities.Configuration;
 
 namespace SIGEBI.Domain.Entities.Notification
 {
@@ -11,5 +12,7 @@ namespace SIGEBI.Domain.Entities.Notification
         public string Mensaje { get; set; }
         public DateTime FechaEnvio { get; set; }
         public bool Leida { get; set; }
+
+        public virtual Usuario Usuario { get; set; }
     }
 }

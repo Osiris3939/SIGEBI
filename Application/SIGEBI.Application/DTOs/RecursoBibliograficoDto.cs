@@ -1,9 +1,7 @@
-using SIGEBI.Domain.Base;
-
-namespace SIGEBI.Domain.Entities.Library
+namespace SIGEBI.Application.DTOs
 {
-    // Representa un recurso bibliografico general de la biblioteca
-    public class RecursoBibliografico : AuditEntity
+    // DTO de recurso bibliografico
+    public class RecursoBibliograficoDto
     {
         public int Id { get; set; }
         public string Titulo { get; set; }
@@ -11,7 +9,5 @@ namespace SIGEBI.Domain.Entities.Library
         public string Editorial { get; set; }
         public int AnioPublicacion { get; set; }
         public int CategoriaId { get; set; }
-
-        public virtual Categoria Categoria { get; set; }
     }
 }

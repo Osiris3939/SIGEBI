@@ -1,5 +1,7 @@
 using System;
 using SIGEBI.Domain.Base;
+using SIGEBI.Domain.Entities.Configuration;
+using SIGEBI.Domain.Entities.Library;
 
 namespace SIGEBI.Domain.Entities.Loan
 {
@@ -11,5 +13,8 @@ namespace SIGEBI.Domain.Entities.Loan
         public int UsuarioId { get; set; }
         public DateTime FechaSolicitud { get; set; }
         public string EstadoSolicitud { get; set; }
+
+        public virtual Libro Libro { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

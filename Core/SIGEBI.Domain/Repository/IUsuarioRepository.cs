@@ -1,7 +1,6 @@
 using SIGEBI.Domain.Entities.Configuration;
-using SIGEBI.Domain.Repository;
 
-namespace SIGEBI.Persistence.Interfaces
+namespace SIGEBI.Domain.Repository
 {
     // Interfaz de repositorio para la gestion de usuarios
     public interface IUsuarioRepository : IBaseRepository<Usuario>
