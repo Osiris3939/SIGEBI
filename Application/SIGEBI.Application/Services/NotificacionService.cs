@@ -11,16 +11,21 @@ using SIGEBI.Domain.Services;
 
 namespace SIGEBI.Application.Services
 {
-    // Servicio de notificaciones con Manejo de Errores y Logging integrados
+    // Servicio de notificaciones con Manejo de Errores, Logger Polimorfico y Envio de Correo/SMS integrados
     public class NotificacionService : INotificacionService
     {
         private readonly INotificacionRepository _notificacionRepository;
         private readonly ILoggerService _logger;
+        private readonly INotificationSenderService _notificationSender;
 
-        public NotificacionService(INotificacionRepository notificacionRepository, ILoggerService logger)
+        public NotificacionService(
+            INotificacionRepository notificacionRepository,
+            ILoggerService logger,
+            INotificationSenderService notificationSender)
         {
             _notificacionRepository = notificacionRepository;
             _logger = logger;
+            _notificationSender = notificationSender;
         }
 
         public async Task<IEnumerable<NotificacionDto>> GetAllAsync()
@@ -61,19 +66,23 @@ namespace SIGEBI.Application.Services
         {
             try
             {
-                _logger.LogInformation($"Enviando notificacion a usuario ID: {dto?.UsuarioId}");
+                _logger.LogInformation($"Iniciando proceso de envio de notificacion a usuario ID: {dto?.UsuarioId}");
                 var notificacion = MapToEntity(dto);
                 notificacion.FechaRegistro = DateTime.Now;
                 notificacion.UsuarioRegistro = "Sistema";
                 notificacion.Estado = true;
 
                 await _notificacionRepository.AddAsync(notificacion);
-                _logger.LogInformation($"Notificacion registrada exitosamente ID: {notificacion.Id}");
-                return new OperationResult { Success = true, Message = "Notificacion registrada exitosamente." };
+
+                // Abstraccion y Polimorfismo: Enviar via Email y SMS mediante CompositeNotificationSenderService
+                await _notificationSender.SendNotificationAsync("usuario@itla.edu.do", dto.Mensaje);
+
+                _logger.LogInformation($"Notificacion registrada y enviada exitosamente via correo/SMS ID: {notificacion.Id}");
+                return new OperationResult { Success = true, Message = "Notificacion registrada y enviada exitosamente." };
             }
             catch (Exception ex)
             {
-                _logger.LogError("Error al registrar la notificacion.", ex);
+                _logger.LogError("Error al registrar y enviar la notificacion.", ex);
                 return new OperationResult { Success = false, Message = "Error al registrar notificacion.", Error = ex.Message };
             }
         }
