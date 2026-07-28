@@ -1,4 +1,6 @@
+using Microsoft.Extensions.DependencyInjection;
 using SIGEBI.IOC;
+using SIGEBI.Persistence.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,13 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSIGEBIServices(builder.Configuration);
 
 var app = builder.Build();
+
+// Inicializar y sembrar datos de prueba en la base de datos (Seeder)
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<SIGEBIContext>();
+    SIGEBIDbSeeder.Initialize(context);
+}
 
 if (!app.Environment.IsDevelopment())
 {

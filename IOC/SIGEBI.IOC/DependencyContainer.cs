@@ -17,9 +17,9 @@ namespace SIGEBI.IOC
     {
         public static IServiceCollection AddSIGEBIServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // Registro del contexto de base de datos
+            // Registro del contexto de base de datos en memoria para funcionamiento 100% garantizado en localhost
             services.AddDbContext<SIGEBIContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                options.UseInMemoryDatabase("SIGEBI_DB"));
 
             // Registro de Servicios de Infraestructura con POLIMORFISMO
             services.AddSingleton<ConsoleLoggerService>();
