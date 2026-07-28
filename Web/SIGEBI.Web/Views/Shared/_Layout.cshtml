@@ -3,185 +3,270 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SIGEBI</title>
-    <!-- CSS Bootstrap 5 & FontAwesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] - SIGEBI | Sistema de Gestión de Bibliotecas</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Animation Libraries: Animate.css & AOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
     <style>
+        :root {
+            --lib-navy: #0f172a;
+            --lib-header-bg: #1e293b;
+            --lib-gold: #d97706;
+            --lib-gold-light: #fef3c7;
+            --lib-bg: #f8fafc;
+            --lib-card-bg: #ffffff;
+            --lib-text-dark: #0f172a;
+            --lib-text-muted: #64748b;
+            --lib-blue: #2563eb;
+            --lib-blue-light: #eff6ff;
+            --lib-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08);
+            --lib-shadow-hover: 0 20px 35px -5px rgba(15, 23, 42, 0.15);
+        }
+
         body {
-            background-color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: #212529;
+            background-color: var(--lib-bg);
+            background-image: radial-gradient(#cbd5e1 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--lib-text-dark);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        .navbar-custom {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 0.8rem 1rem;
+        .font-serif {
+            font-family: 'Playfair Display', serif;
         }
 
-        .navbar-brand {
+        /* Navbar estilo biblioteca elegante */
+        .navbar-library {
+            background-color: var(--lib-header-bg);
+            border-bottom: 3px solid var(--lib-gold);
+            padding: 0.9rem 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .navbar-brand-lib {
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.25rem;
-            color: #111827 !important;
-            letter-spacing: -0.3px;
+            font-size: 1.6rem;
+            color: #ffffff !important;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .nav-link {
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: #374151 !important;
-            margin-left: 1.2rem;
-            transition: color 0.15s ease;
+        .navbar-brand-lib i {
+            color: var(--lib-gold);
         }
 
-        .nav-link:hover, .nav-link.active {
-            color: #2563eb !important;
+        .nav-link-lib {
             font-weight: 600;
+            font-size: 0.95rem;
+            color: #cbd5e1 !important;
+            padding: 0.5rem 1.1rem !important;
+            border-radius: 8px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Estilo de Tarjetas del Dashboard igual a la guía del profesor */
-        .card-student {
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            background: #ffffff;
-            padding: 1.8rem 1.2rem;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: all 0.2s ease;
+        .nav-link-lib:hover, .nav-link-lib.active {
+            color: #ffffff !important;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
         }
 
-        .card-student:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
+        .nav-link-lib.active {
+            border-bottom: 2px solid var(--lib-gold);
+            border-radius: 8px 8px 0 0;
         }
 
-        .icon-box-blue {
-            width: 64px;
-            height: 64px;
-            background-color: #eff6ff;
-            color: #2563eb;
+        /* Tarjetas de biblioteca con animación 3D Tilt y sombra elegante */
+        .card-lib {
+            border: 1px solid #e2e8f0;
             border-radius: 16px;
+            background: var(--lib-card-bg);
+            box-shadow: var(--lib-shadow);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-lib:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--lib-shadow-hover);
+            border-color: #cbd5e1;
+        }
+
+        .icon-box-gold {
+            width: 68px;
+            height: 68px;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: var(--lib-gold);
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.75rem;
+            font-size: 1.85rem;
             margin: 0 auto 1.2rem auto;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.15);
+            transition: transform 0.3s ease;
         }
 
-        .btn-blue-outline {
-            color: #2563eb;
-            border: 1px solid #bfdbfe;
-            background-color: #ffffff;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.875rem;
-            padding: 0.45rem 1rem;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.15s ease;
+        .card-lib:hover .icon-box-gold {
+            transform: scale(1.1) rotate(4deg);
         }
 
-        .btn-blue-outline:hover {
-            background-color: #eff6ff;
-            color: #1d4ed8;
-            border-color: #93c5fd;
-        }
-
-        .btn-primary-student {
-            background-color: #2563eb;
+        .btn-gold-action {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
             color: #ffffff;
             border: none;
-            border-radius: 6px;
-            font-weight: 500;
-            padding: 0.5rem 1.25rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.55rem 1.25rem;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+            text-decoration: none;
+            transition: all 0.25s ease;
+            display: inline-block;
         }
 
-        .btn-primary-student:hover {
-            background-color: #1d4ed8;
+        .btn-gold-action:hover {
             color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(217, 119, 6, 0.35);
         }
 
-        /* Estilo de Tablas Académicas */
-        .table-student {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .table-student th {
+        .btn-navy-outline {
+            color: var(--lib-navy);
+            border: 1.5px solid #cbd5e1;
             background-color: #ffffff;
-            color: #111827;
-            font-size: 0.8rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            padding: 0.5rem 1.1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-navy-outline:hover {
+            background-color: var(--lib-navy);
+            color: #ffffff;
+            border-color: var(--lib-navy);
+        }
+
+        /* Estilo de portadas de libros */
+        .book-cover-wrapper {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background-color: #0f172a;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .book-cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card-lib:hover .book-cover-img {
+            transform: scale(1.08);
+        }
+
+        .book-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            color: var(--lib-gold);
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 0.35em 0.8em;
+            border-radius: 20px;
+            border: 1px solid rgba(217, 119, 6, 0.3);
+        }
+
+        /* Tablas elegantes de biblioteca */
+        .table-lib {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .table-lib thead th {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-size: 0.82rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 0.85rem 1rem;
-            border-bottom: 2px solid #e5e7eb;
+            letter-spacing: 0.06em;
+            padding: 1rem;
+            border-bottom: 2px solid #cbd5e1;
         }
 
-        .table-student td {
-            padding: 0.85rem 1rem;
-            border-bottom: 1px solid #f3f4f6;
+        .table-lib tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        .table-lib tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .table-lib td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
             vertical-align: middle;
-            font-size: 0.9rem;
-            color: #374151;
-        }
-
-        .link-action {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.875rem;
-        }
-
-        .link-action:hover {
-            text-decoration: underline;
-        }
-
-        .badge-student {
-            font-weight: 500;
-            font-size: 0.8rem;
-            padding: 0.35em 0.75em;
-            border-radius: 4px;
+            font-size: 0.92rem;
         }
 
         footer {
             margin-top: auto;
-            border-top: 1px solid #e5e7eb;
-            background-color: #ffffff;
-            padding: 1.2rem 0;
-            color: #6b7280;
-            font-size: 0.85rem;
+            background-color: var(--lib-header-bg);
+            color: #94a3b8;
+            border-top: 3px solid var(--lib-gold);
+            padding: 1.5rem 0;
+            font-size: 0.875rem;
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-custom">
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-library">
             <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">SIGEBI</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <a class="navbar-brand-lib" asp-controller="Home" asp-action="Index">
+                    <i class="fa-solid fa-book-bookmark"></i> SIGEBI
+                </a>
+                <button class="navbar-toggler text-white border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav align-items-center gap-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
+                            <a class="nav-link-lib" asp-controller="Usuarios" asp-action="Index"><i class="fa-solid fa-users me-1 text-warning"></i> Usuarios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Recursos" asp-action="Index">Catálogo</a>
+                            <a class="nav-link-lib" asp-controller="Recursos" asp-action="Index"><i class="fa-solid fa-book-open me-1 text-warning"></i> Catálogo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Prestamos" asp-action="Index">Préstamos</a>
+                            <a class="nav-link-lib" asp-controller="Prestamos" asp-action="Index"><i class="fa-solid fa-handshake me-1 text-warning"></i> Préstamos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Penalizaciones" asp-action="Index">Penalizaciones</a>
+                            <a class="nav-link-lib" asp-controller="Penalizaciones" asp-action="Index"><i class="fa-solid fa-gavel me-1 text-warning"></i> Penalizaciones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Notificaciones" asp-action="Index">Notificaciones</a>
+                            <a class="nav-link-lib" asp-controller="Notificaciones" asp-action="Index"><i class="fa-solid fa-bell me-1 text-warning"></i> Notificaciones</a>
                         </li>
                     </ul>
                 </div>
@@ -197,11 +282,20 @@
 
     <footer>
         <div class="container text-center">
-            &copy; 2026 - SIGEBI - Sistema de Gestión de Bibliotecas | ITLA
+            <p class="mb-1 fw-semibold text-white">SIGEBI — Sistema de Gestión de Bibliotecas Institucional</p>
+            <p class="mb-0 text-muted small">Instituto Tecnológico de Las Américas (ITLA) | Programación 2 — Franklyn Enmanuel Santana Rodríguez (2025-2089)</p>
         </div>
     </footer>
 
+    <!-- JS Scripts & AOS Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

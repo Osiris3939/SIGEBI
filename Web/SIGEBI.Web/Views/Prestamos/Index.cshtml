@@ -3,43 +3,50 @@
     ViewData["Title"] = "Listado de Préstamos";
 }
 
-<div class="mb-4">
-    <h2 class="fw-bold mb-3">Listado de Préstamos</h2>
-    <a asp-action="Crear" class="link-action">Agregar Nuevo Préstamo</a>
+<div class="d-flex justify-content-between align-items-center mb-4" data-aos="fade-down">
+    <div>
+        <h2 class="font-serif fw-bold text-dark mb-1"><i class="fa-solid fa-handshake text-warning me-2"></i>Gestión de Préstamos</h2>
+        <p class="text-muted small mb-0">Control de salidas de ejemplares y fechas pactadas de devolución.</p>
+    </div>
+    <a asp-action="Crear" class="btn-gold-action">
+        <i class="fa-solid fa-plus me-2"></i> Registrar Préstamo
+    </a>
 </div>
 
-<div class="card border rounded-3 p-3 shadow-sm">
-    <table class="table-student">
-        <thead>
-            <tr>
-                <th>PRESTAMOID</th>
-                <th>USUARIOID</th>
-                <th>EJEMPLARID</th>
-                <th>FECHAPRESTAMO</th>
-                <th>FECHADEVOLUCIONESPERADA</th>
-                <th>ESTADO</th>
-                <th>ACCIONES</th>
-            </tr>
-        </thead>
-        <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var item in Model)
-            {
+<div class="card-lib p-4" data-aos="fade-up">
+    <div class="table-responsive">
+        <table class="table-lib">
+            <thead>
                 <tr>
-                    <td>@item.Id</td>
-                    <td>@item.UsuarioId</td>
-                    <td>@item.EjemplarId</td>
-                    <td>@item.FechaPrestamo.ToString("g")</td>
-                    <td>@item.FechaDevolucionPactada.ToString("g")</td>
-                    <td>@item.EstadoPrestamo</td>
-                    <td>
-                        <a asp-action="Editar" asp-route-id="@item.Id" class="link-action">Editar</a> |
-                        <a asp-action="Detalles" asp-route-id="@item.Id" class="link-action">Detalles</a>
-                    </td>
+                    <th>PRESTAMOID</th>
+                    <th>USUARIO</th>
+                    <th>EJEMPLAR</th>
+                    <th>FECHA PRÉSTAMO</th>
+                    <th>DEVOLUCIÓN PACTADA</th>
+                    <th>ESTADO</th>
+                    <th class="text-end">ACCIONES</th>
                 </tr>
+            </thead>
+            <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fw-bold text-muted">#@item.Id</td>
+                        <td><i class="fa-solid fa-user text-muted me-1"></i> Usuario #@item.UsuarioId</td>
+                        <td><i class="fa-solid fa-book text-muted me-1"></i> Ejemplar #@item.EjemplarId</td>
+                        <td>@item.FechaPrestamo.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td><span class="text-primary fw-bold">@item.FechaDevolucionPactada.ToString("yyyy-MM-dd HH:mm")</span></td>
+                        <td><span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2 rounded-pill"><i class="fa-solid fa-clock me-1"></i> @item.EstadoPrestamo</span></td>
+                        <td class="text-end">
+                            <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary me-1"><i class="fa-solid fa-pen me-1"></i> Editar</a>
+                            <a asp-action="Detalles" asp-route-id="@item.Id" class="btn btn-sm btn-navy-outline"><i class="fa-solid fa-eye me-1"></i> Detalles</a>
+                        </td>
+                    </tr>
+                }
             }
-        }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>

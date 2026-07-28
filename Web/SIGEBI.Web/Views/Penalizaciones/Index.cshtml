@@ -3,43 +3,52 @@
     ViewData["Title"] = "Listado de Penalizaciones";
 }
 
-<div class="mb-4">
-    <h2 class="fw-bold mb-3">Listado de Penalizaciones</h2>
-    <a asp-action="Crear" class="link-action">Agregar Nueva Penalización</a>
+<div class="d-flex justify-content-between align-items-center mb-4" data-aos="fade-down">
+    <div>
+        <h2 class="font-serif fw-bold text-dark mb-1"><i class="fa-solid fa-gavel text-warning me-2"></i>Gestión de Penalizaciones</h2>
+        <p class="text-muted small mb-0">Control de multas y cobros por concepto de entrega tardía.</p>
+    </div>
+    <a asp-action="Crear" class="btn-gold-action">
+        <i class="fa-solid fa-plus me-2"></i> Registrar Penalización
+    </a>
 </div>
 
-<div class="card border rounded-3 p-3 shadow-sm">
-    <table class="table-student">
-        <thead>
-            <tr>
-                <th>PENALIZACIONID</th>
-                <th>USUARIOID</th>
-                <th>PRESTAMOID</th>
-                <th>MONTO</th>
-                <th>ESTADO</th>
-                <th>FECHAEMISION</th>
-                <th>ACCIONES</th>
-            </tr>
-        </thead>
-        <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var item in Model)
-            {
+<div class="card-lib p-4" data-aos="fade-up">
+    <div class="table-responsive">
+        <table class="table-lib">
+            <thead>
                 <tr>
-                    <td>@item.Id</td>
-                    <td>@item.UsuarioId</td>
-                    <td>@item.PrestamoId</td>
-                    <td>@item.MontoMulta.ToString("F2")</td>
-                    <td>@(item.Pagada ? "Pagada" : "Pendiente")</td>
-                    <td>7/14/2026 9:55:36 PM</td>
-                    <td>
-                        <a asp-action="Editar" asp-route-id="@item.Id" class="link-action">Editar</a> |
-                        <a asp-action="Detalles" asp-route-id="@item.Id" class="link-action">Detalles</a>
-                    </td>
+                    <th>PENALIZACIONID</th>
+                    <th>USUARIO</th>
+                    <th>PRÉSTAMO</th>
+                    <th>MONTO</th>
+                    <th>ESTADO</th>
+                    <th class="text-end">ACCIONES</th>
                 </tr>
+            </thead>
+            <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fw-bold text-muted">#@item.Id</td>
+                        <td><i class="fa-solid fa-user text-muted me-1"></i> Usuario #@item.UsuarioId</td>
+                        <td><i class="fa-solid fa-receipt text-muted me-1"></i> Préstamo #@item.PrestamoId</td>
+                        <td class="fw-bold text-danger fs-6">RD$ @item.MontoMulta.ToString("F2")</td>
+                        <td>
+                            <span class="badge @(item.Pagada ? "bg-success bg-opacity-10 text-success border border-success" : "bg-warning bg-opacity-10 text-warning border border-warning") px-3 py-2 rounded-pill">
+                                <i class="fa-solid @(item.Pagada ? "fa-circle-check" : "fa-triangle-exclamation") me-1"></i> @(item.Pagada ? "Pagada" : "Pendiente")
+                            </span>
+                        </td>
+                        <td class="text-end">
+                            <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary me-1"><i class="fa-solid fa-pen me-1"></i> Editar</a>
+                            <a asp-action="Detalles" asp-route-id="@item.Id" class="btn btn-sm btn-navy-outline"><i class="fa-solid fa-eye me-1"></i> Detalles</a>
+                        </td>
+                    </tr>
+                }
             }
-        }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>

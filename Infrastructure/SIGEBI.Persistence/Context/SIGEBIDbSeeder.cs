@@ -61,7 +61,7 @@ namespace SIGEBI.Persistence.Context
                 context.SaveChanges();
             }
 
-            // 2. Recursos Bibliograficos (CATALOGO DE LIBROS CON IMAGENES Y MUCHOS LIBROS)
+            // 2. Recursos Bibliográficos con las Portadas Exactas enviadas por el Usuario
             if (!context.RecursosBibliograficos.Any())
             {
                 context.RecursosBibliograficos.AddRange(
@@ -70,7 +70,7 @@ namespace SIGEBI.Persistence.Context
                         Id = 1,
                         Titulo = "Don Quijote de la Mancha",
                         Autor = "Miguel de Cervantes",
-                        Editorial = "Espasa Calpe",
+                        Editorial = "Austral Comic",
                         AnioPublicacion = 1605,
                         CategoriaId = 1,
                         ImagenUrl = "/images/don_quijote.jpg",
@@ -81,9 +81,9 @@ namespace SIGEBI.Persistence.Context
                     new RecursoBibliografico
                     {
                         Id = 2,
-                        Titulo = "Cien Años de Soledad",
+                        Titulo = "Cien años de soledad",
                         Autor = "Gabriel García Márquez",
-                        Editorial = "Editorial Sudamericana",
+                        Editorial = "Debolsillo",
                         AnioPublicacion = 1967,
                         CategoriaId = 1,
                         ImagenUrl = "/images/cien_anos_soledad.jpg",
@@ -96,7 +96,7 @@ namespace SIGEBI.Persistence.Context
                         Id = 3,
                         Titulo = "El Principito",
                         Autor = "Antoine de Saint-Exupéry",
-                        Editorial = "Gallimard",
+                        Editorial = "Zig-Zag",
                         AnioPublicacion = 1943,
                         CategoriaId = 2,
                         ImagenUrl = "/images/principito.jpg",
@@ -107,9 +107,9 @@ namespace SIGEBI.Persistence.Context
                     new RecursoBibliografico
                     {
                         Id = 4,
-                        Titulo = "C# 12 and .NET 8 Clean Architecture",
-                        Autor = "Mark J. Price",
-                        Editorial = "Packt Publishing",
+                        Titulo = "Software Architecture with C# 12 and .NET 8",
+                        Autor = "Gabriel Baptista & Francesco Abbruzzese",
+                        Editorial = "Packt",
                         AnioPublicacion = 2024,
                         CategoriaId = 3,
                         ImagenUrl = "/images/csharp_net.jpg",
@@ -122,23 +122,10 @@ namespace SIGEBI.Persistence.Context
                         Id = 5,
                         Titulo = "Introducción a los Sistemas de Bases de Datos",
                         Autor = "C.J. Date",
-                        Editorial = "Pearson Education",
+                        Editorial = "Addison-Wesley Iberoamericana",
                         AnioPublicacion = 2021,
                         CategoriaId = 3,
-                        ImagenUrl = "/images/csharp_net.jpg",
-                        FechaRegistro = DateTime.Now,
-                        UsuarioRegistro = "Sistema",
-                        Estado = true
-                    },
-                    new RecursoBibliografico
-                    {
-                        Id = 6,
-                        Titulo = "La Odisea",
-                        Autor = "Homero",
-                        Editorial = "Gredos",
-                        AnioPublicacion = 1998,
-                        CategoriaId = 1,
-                        ImagenUrl = "/images/don_quijote.jpg",
+                        ImagenUrl = "/images/bases_datos.jpg",
                         FechaRegistro = DateTime.Now,
                         UsuarioRegistro = "Sistema",
                         Estado = true
