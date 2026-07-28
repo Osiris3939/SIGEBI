@@ -3,69 +3,47 @@
     ViewData["Title"] = "Catálogo de Recursos";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Catálogo de Recursos</h2>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-extrabold text-dark mb-1"><i class="fa-solid fa-book-open text-primary me-2"></i>Catálogo de Recursos Bibliográficos</h2>
+        <p class="text-secondary small mb-0">Explora la colección física y digital disponible en la biblioteca institicional.</p>
+    </div>
+    <a asp-action="Crear" class="btn btn-primary-custom">
+        <i class="fa-solid fa-plus me-2"></i> Agregar Nuevo Recurso
+    </a>
 </div>
 
-<div class="mb-3">
-    <a asp-action="Crear" class="btn btn-outline-primary btn-sm">Agregar Nuevo Recurso</a>
-</div>
+<!-- Grid de Libros con Portadas -->
+<div class="row g-4 mb-5">
+@if (Model != null && Model.Any())
+{
+    foreach (var item in Model)
+    {
+        <div class="col-md-6 col-lg-4">
+            <div class="card card-custom book-card h-100">
+                <div class="book-img-wrapper">
+                    <img src="@(string.IsNullOrEmpty(item.ImagenUrl) ? "/images/don_quijote.jpg" : item.ImagenUrl)" class="book-img" alt="@item.Titulo" />
+                </div>
+                <div class="card-body d-flex flex-column justify-content-between p-4">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge badge-category">Categoría #@item.CategoriaId</span>
+                            <span class="text-muted small"><i class="fa-solid fa-calendar me-1"></i>@item.AnioPublicacion</span>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-1">@item.Titulo</h5>
+                        <p class="text-secondary small mb-3"><i class="fa-solid fa-pen-nib me-1"></i>@item.Autor</p>
+                    </div>
 
-<div class="card card-custom p-3">
-    <table class="table table-hover align-middle table-custom mb-0">
-        <thead>
-            <tr>
-                <th>RECURSOID</th>
-                <th>TITULO</th>
-                <th>AUTOR</th>
-                <th>EDITORIAL</th>
-                <th>AÑO</th>
-                <th>ACCIONES</th>
-            </tr>
-        </thead>
-        <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Titulo</td>
-                    <td>@item.Autor</td>
-                    <td>@item.Editorial</td>
-                    <td>@item.AnioPublicacion</td>
-                    <td>
-                        <a asp-action="Editar" asp-route-id="@item.Id" class="btn-action text-primary">Editar</a> |
-                        <a asp-action="Detalles" asp-route-id="@item.Id" class="btn-action text-primary">Detalles</a>
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td>1</td>
-                <td>El Principito (Edición Especial)</td>
-                <td>Antoine de Saint-Exupéry</td>
-                <td>Literatura</td>
-                <td>2020</td>
-                <td>
-                    <a asp-action="Editar" asp-route-id="1" class="btn-action text-primary">Editar</a> |
-                    <a asp-action="Detalles" asp-route-id="1" class="btn-action text-primary">Detalles</a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Cien años de soledad</td>
-                <td>Gabriel García Márquez</td>
-                <td>Novela literaria</td>
-                <td>2019</td>
-                <td>
-                    <a asp-action="Editar" asp-route-id="2" class="btn-action text-primary">Editar</a> |
-                    <a asp-action="Detalles" asp-route-id="2" class="btn-action text-primary">Detalles</a>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
+                    <div class="border-top pt-3 mt-2 d-flex justify-content-between align-items-center">
+                        <small class="text-muted">Editorial: @item.Editorial</small>
+                        <div>
+                            <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary me-1"><i class="fa-solid fa-pen"></i></a>
+                            <a asp-action="Detalles" asp-route-id="@item.Id" class="btn btn-sm btn-primary-custom"><i class="fa-solid fa-eye"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
 </div>

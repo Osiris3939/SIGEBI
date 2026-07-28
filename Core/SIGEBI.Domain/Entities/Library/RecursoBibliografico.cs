@@ -11,6 +11,7 @@ namespace SIGEBI.Domain.Entities.Library
         public string Editorial { get; set; }
         public int AnioPublicacion { get; set; }
         public int CategoriaId { get; set; }
+        public string ImagenUrl { get; set; }
 
         public virtual Categoria Categoria { get; set; }
     }

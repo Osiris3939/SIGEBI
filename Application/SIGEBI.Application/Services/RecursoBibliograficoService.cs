@@ -95,6 +95,10 @@ namespace SIGEBI.Application.Services
                 recursoExistente.Editorial = dto.Editorial;
                 recursoExistente.AnioPublicacion = dto.AnioPublicacion;
                 recursoExistente.CategoriaId = dto.CategoriaId;
+                if (!string.IsNullOrEmpty(dto.ImagenUrl))
+                {
+                    recursoExistente.ImagenUrl = dto.ImagenUrl;
+                }
 
                 await _recursoRepository.UpdateAsync(recursoExistente);
                 _logger.LogInformation($"Recurso ID: {dto.Id} actualizado exitosamente.");
@@ -133,7 +137,8 @@ namespace SIGEBI.Application.Services
                 Autor = entity.Autor,
                 Editorial = entity.Editorial,
                 AnioPublicacion = entity.AnioPublicacion,
-                CategoriaId = entity.CategoriaId
+                CategoriaId = entity.CategoriaId,
+                ImagenUrl = entity.ImagenUrl
             };
         }
 
@@ -147,7 +152,8 @@ namespace SIGEBI.Application.Services
                 Autor = dto.Autor,
                 Editorial = dto.Editorial,
                 AnioPublicacion = dto.AnioPublicacion,
-                CategoriaId = dto.CategoriaId
+                CategoriaId = dto.CategoriaId,
+                ImagenUrl = dto.ImagenUrl
             };
         }
     }

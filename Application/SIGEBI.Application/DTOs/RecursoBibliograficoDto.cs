@@ -9,5 +9,6 @@ namespace SIGEBI.Application.DTOs
         public string Editorial { get; set; }
         public int AnioPublicacion { get; set; }
         public int CategoriaId { get; set; }
+        public string ImagenUrl { get; set; }
     }
 }

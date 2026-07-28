@@ -61,18 +61,19 @@ namespace SIGEBI.Persistence.Context
                 context.SaveChanges();
             }
 
-            // 2. Recursos Bibliograficos
+            // 2. Recursos Bibliograficos (CATALOGO DE LIBROS CON IMAGENES Y MUCHOS LIBROS)
             if (!context.RecursosBibliograficos.Any())
             {
                 context.RecursosBibliograficos.AddRange(
                     new RecursoBibliografico
                     {
                         Id = 1,
-                        Titulo = "El Principito (Edición Especial)",
-                        Autor = "Antoine de Saint-Exupéry",
-                        Editorial = "Literatura",
-                        AnioPublicacion = 2020,
+                        Titulo = "Don Quijote de la Mancha",
+                        Autor = "Miguel de Cervantes",
+                        Editorial = "Espasa Calpe",
+                        AnioPublicacion = 1605,
                         CategoriaId = 1,
+                        ImagenUrl = "/images/don_quijote.jpg",
                         FechaRegistro = DateTime.Now,
                         UsuarioRegistro = "Sistema",
                         Estado = true
@@ -80,11 +81,64 @@ namespace SIGEBI.Persistence.Context
                     new RecursoBibliografico
                     {
                         Id = 2,
-                        Titulo = "Cien años de soledad",
+                        Titulo = "Cien Años de Soledad",
                         Autor = "Gabriel García Márquez",
-                        Editorial = "Novela literaria",
-                        AnioPublicacion = 2019,
+                        Editorial = "Editorial Sudamericana",
+                        AnioPublicacion = 1967,
                         CategoriaId = 1,
+                        ImagenUrl = "/images/cien_anos_soledad.jpg",
+                        FechaRegistro = DateTime.Now,
+                        UsuarioRegistro = "Sistema",
+                        Estado = true
+                    },
+                    new RecursoBibliografico
+                    {
+                        Id = 3,
+                        Titulo = "El Principito",
+                        Autor = "Antoine de Saint-Exupéry",
+                        Editorial = "Gallimard",
+                        AnioPublicacion = 1943,
+                        CategoriaId = 2,
+                        ImagenUrl = "/images/principito.jpg",
+                        FechaRegistro = DateTime.Now,
+                        UsuarioRegistro = "Sistema",
+                        Estado = true
+                    },
+                    new RecursoBibliografico
+                    {
+                        Id = 4,
+                        Titulo = "C# 12 and .NET 8 Clean Architecture",
+                        Autor = "Mark J. Price",
+                        Editorial = "Packt Publishing",
+                        AnioPublicacion = 2024,
+                        CategoriaId = 3,
+                        ImagenUrl = "/images/csharp_net.jpg",
+                        FechaRegistro = DateTime.Now,
+                        UsuarioRegistro = "Sistema",
+                        Estado = true
+                    },
+                    new RecursoBibliografico
+                    {
+                        Id = 5,
+                        Titulo = "Introducción a los Sistemas de Bases de Datos",
+                        Autor = "C.J. Date",
+                        Editorial = "Pearson Education",
+                        AnioPublicacion = 2021,
+                        CategoriaId = 3,
+                        ImagenUrl = "/images/csharp_net.jpg",
+                        FechaRegistro = DateTime.Now,
+                        UsuarioRegistro = "Sistema",
+                        Estado = true
+                    },
+                    new RecursoBibliografico
+                    {
+                        Id = 6,
+                        Titulo = "La Odisea",
+                        Autor = "Homero",
+                        Editorial = "Gredos",
+                        AnioPublicacion = 1998,
+                        CategoriaId = 1,
+                        ImagenUrl = "/images/don_quijote.jpg",
                         FechaRegistro = DateTime.Now,
                         UsuarioRegistro = "Sistema",
                         Estado = true
