@@ -1,123 +1,70 @@
 @{
-    ViewData["Title"] = "Inicio";
+    ViewData["Title"] = "Página de Inicio";
 }
 
-<!-- Hero Banner -->
-<div class="hero-banner mb-5 animate__animated animate__fadeInDown">
-    <div class="row align-items-center">
-        <div class="col-lg-8">
-            <span class="badge bg-primary px-3 py-2 rounded-pill mb-3 fw-semibold">Sistema Institucional v2.0</span>
-            <h1 class="display-4 fw-extrabold mb-3">Bienvenido a SIGEBI</h1>
-            <p class="lead text-light opacity-75 mb-4">Plataforma integral para la gestión de usuarios, catálogo bibliográfico, préstamos, penalizaciones y notificaciones institucionales.</p>
-            <div class="d-flex gap-3">
-                <a asp-controller="Recursos" asp-action="Index" class="btn btn-primary-custom px-4 py-2">
-                    <i class="fa-solid fa-magnifying-glass me-2"></i> Explorar Catálogo
-                </a>
-                <a asp-controller="Prestamos" asp-action="Index" class="btn btn-outline-light px-4 py-2 rounded-3 fw-semibold">
-                    <i class="fa-solid fa-book-bookmark me-2"></i> Ver Préstamos Activos
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-4 text-center d-none d-lg-block">
-            <i class="fa-solid fa-book-open-reader fa-8x text-primary opacity-50 animate__animated animate__pulse animate__infinite"></i>
-        </div>
-    </div>
+<div class="text-center py-4 mb-5">
+    <h1 class="fw-bold display-6 mb-2 text-dark">Bienvenido al SIGEBI</h1>
+    <p class="text-secondary fs-5">Sistema de Gestión de Bibliotecas Institucional</p>
 </div>
 
-<!-- Dashboard Modules Grid -->
-<div class="row g-4 mb-5">
-    <!-- Card 1: Usuarios -->
-    <div class="col-md-6 col-lg-4">
-        <div class="card card-custom h-100 p-4">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="p-3 bg-primary bg-opacity-10 text-primary rounded-4">
-                    <i class="fa-solid fa-users fa-2x"></i>
-                </div>
-                <div>
-                    <h5 class="fw-bold mb-0">Gestión de Usuarios</h5>
-                    <small class="text-muted">Control de miembros y roles</small>
-                </div>
+<div class="row g-4 justify-content-center">
+    <!-- Módulo 1: Usuarios -->
+    <div class="col-md-4 col-lg-2">
+        <div class="card-student">
+            <div class="icon-box-blue">
+                <i class="fa-solid fa-users"></i>
             </div>
-            <p class="text-secondary small mb-4">Administración centralizada de cuentas de estudiantes, profesores y roles de acceso.</p>
-            <a asp-controller="Usuarios" asp-action="Index" class="btn btn-outline-primary w-100 rounded-3 font-weight-semibold">
-                Acceder al Módulo <i class="fa-solid fa-arrow-right ms-2"></i>
-            </a>
+            <h5 class="fw-bold fs-6 mb-1 text-dark">Usuarios</h5>
+            <p class="text-muted small mb-4">Gestión de usuarios</p>
+            <a asp-controller="Usuarios" asp-action="Index" class="btn-blue-outline w-100">Gestión de usuarios</a>
         </div>
     </div>
 
-    <!-- Card 2: Catálogo -->
-    <div class="col-md-6 col-lg-4">
-        <div class="card card-custom h-100 p-4">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="p-3 bg-success bg-opacity-10 text-success rounded-4">
-                    <i class="fa-solid fa-book-open fa-2x"></i>
-                </div>
-                <div>
-                    <h5 class="fw-bold mb-0">Catálogo de Recursos</h5>
-                    <small class="text-muted">Libros y ejemplares</small>
-                </div>
+    <!-- Módulo 2: Catálogo -->
+    <div class="col-md-4 col-lg-2">
+        <div class="card-student">
+            <div class="icon-box-blue">
+                <i class="fa-solid fa-book-open"></i>
             </div>
-            <p class="text-secondary small mb-4">Consulte libros, ejemplares físicos, categorías y portadas de alta calidad.</p>
-            <a asp-controller="Recursos" asp-action="Index" class="btn btn-outline-success w-100 rounded-3 font-weight-semibold">
-                Ver Catálogo Completo <i class="fa-solid fa-arrow-right ms-2"></i>
-            </a>
+            <h5 class="fw-bold fs-6 mb-1 text-dark">Catálogo</h5>
+            <p class="text-muted small mb-4">Gestión de recursos</p>
+            <a asp-controller="Recursos" asp-action="Index" class="btn-blue-outline w-100">Gestión de recursos</a>
         </div>
     </div>
 
-    <!-- Card 3: Préstamos -->
-    <div class="col-md-6 col-lg-4">
-        <div class="card card-custom h-100 p-4">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="p-3 bg-info bg-opacity-10 text-info rounded-4">
-                    <i class="fa-solid fa-handshake fa-2x"></i>
-                </div>
-                <div>
-                    <h5 class="fw-bold mb-0">Gestión de Préstamos</h5>
-                    <small class="text-muted">Seguimiento de salidas</small>
-                </div>
+    <!-- Módulo 3: Préstamos -->
+    <div class="col-md-4 col-lg-2">
+        <div class="card-student">
+            <div class="icon-box-blue">
+                <i class="fa-solid fa-handshake"></i>
             </div>
-            <p class="text-secondary small mb-4">Control de préstamos vigentes, fechas esperadas de retorno y entregas de libros.</p>
-            <a asp-controller="Prestamos" asp-action="Index" class="btn btn-outline-info w-100 rounded-3 font-weight-semibold">
-                Gestionar Préstamos <i class="fa-solid fa-arrow-right ms-2"></i>
-            </a>
+            <h5 class="fw-bold fs-6 mb-1 text-dark">Préstamos</h5>
+            <p class="text-muted small mb-4">Gestión de préstamos</p>
+            <a asp-controller="Prestamos" asp-action="Index" class="btn-blue-outline w-100">Gestión de préstamos</a>
         </div>
     </div>
 
-    <!-- Card 4: Penalizaciones -->
-    <div class="col-md-6 col-lg-4">
-        <div class="card card-custom h-100 p-4">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="p-3 bg-warning bg-opacity-10 text-warning rounded-4">
-                    <i class="fa-solid fa-gavel fa-2x"></i>
-                </div>
-                <div>
-                    <h5 class="fw-bold mb-0">Penalizaciones</h5>
-                    <small class="text-muted">Multas y estado de pagos</small>
-                </div>
+    <!-- Módulo 4: Penalizaciones -->
+    <div class="col-md-4 col-lg-2">
+        <div class="card-student">
+            <div class="icon-box-blue">
+                <i class="fa-solid fa-gavel"></i>
             </div>
-            <p class="text-secondary small mb-4">Registro y cobro de penalizaciones a usuarios por concepto de entrega tardía.</p>
-            <a asp-controller="Penalizaciones" asp-action="Index" class="btn btn-outline-warning w-100 rounded-3 font-weight-semibold">
-                Ver Penalizaciones <i class="fa-solid fa-arrow-right ms-2"></i>
-            </a>
+            <h5 class="fw-bold fs-6 mb-1 text-dark">Penalizaciones</h5>
+            <p class="text-muted small mb-4">Gestión de penalizaciones</p>
+            <a asp-controller="Penalizaciones" asp-action="Index" class="btn-blue-outline w-100">Gestión de penalizaciones</a>
         </div>
     </div>
 
-    <!-- Card 5: Notificaciones -->
-    <div class="col-md-6 col-lg-4">
-        <div class="card card-custom h-100 p-4">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="p-3 bg-danger bg-opacity-10 text-danger rounded-4">
-                    <i class="fa-solid fa-bell fa-2x"></i>
-                </div>
-                <div>
-                    <h5 class="fw-bold mb-0">Notificaciones</h5>
-                    <small class="text-muted">Avisos y recordatorios</small>
-                </div>
+    <!-- Módulo 5: Notificaciones -->
+    <div class="col-md-4 col-lg-2">
+        <div class="card-student">
+            <div class="icon-box-blue">
+                <i class="fa-solid fa-bell"></i>
             </div>
-            <p class="text-secondary small mb-4">Envío de notificaciones automáticas y alertas por correo electrónico o SMS.</p>
-            <a asp-controller="Notificaciones" asp-action="Index" class="btn btn-outline-danger w-100 rounded-3 font-weight-semibold">
-                Centro de Avisos <i class="fa-solid fa-arrow-right ms-2"></i>
-            </a>
+            <h5 class="fw-bold fs-6 mb-1 text-dark">Notificaciones</h5>
+            <p class="text-muted small mb-4">Gestión de notificaciones</p>
+            <a asp-controller="Notificaciones" asp-action="Index" class="btn-blue-outline w-100">Gestión de notificaciones</a>
         </div>
     </div>
 </div>
