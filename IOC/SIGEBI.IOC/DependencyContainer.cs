@@ -4,6 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using SIGEBI.Application.Interfaces;
 using SIGEBI.Application.Services;
 using SIGEBI.Domain.Repository;
+using SIGEBI.Domain.Services;
+using SIGEBI.Infrastructure.Logging;
+using SIGEBI.Infrastructure.Notifications;
 using SIGEBI.Persistence.Context;
 using SIGEBI.Persistence.Repositories;
 
@@ -17,6 +20,23 @@ namespace SIGEBI.IOC
             // Registro del contexto de base de datos
             services.AddDbContext<SIGEBIContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            // Registro de Servicios de Infraestructura con POLIMORFISMO
+            services.AddSingleton<ConsoleLoggerService>();
+            services.AddSingleton<FileLoggerService>();
+            services.AddSingleton<ILoggerService>(sp => new CompositeLoggerService(new ILoggerService[]
+            {
+                sp.GetRequiredService<ConsoleLoggerService>(),
+                sp.GetRequiredService<FileLoggerService>()
+            }));
+
+            services.AddScoped<EmailNotificationSenderService>();
+            services.AddScoped<SmsNotificationSenderService>();
+            services.AddScoped<INotificationSenderService>(sp => new CompositeNotificationSenderService(new INotificationSenderService[]
+            {
+                sp.GetRequiredService<EmailNotificationSenderService>(),
+                sp.GetRequiredService<SmsNotificationSenderService>()
+            }));
 
             // Registro de los repositorios
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();

@@ -1,0 +1,36 @@
+@model SIGEBI.Application.DTOs.PrestamoDto
+@{
+    ViewData["Title"] = "Crear Préstamo";
+}
+
+<h3 class="mb-4">Crear Préstamo</h3>
+
+<div class="card card-custom p-4 col-md-8 col-lg-6">
+    <form asp-action="Crear" method="post">
+        <div class="mb-3">
+            <label class="form-label font-weight-bold">Usuario ID</label>
+            <input asp-for="UsuarioId" type="number" class="form-control" value="3" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label font-weight-bold">Ejemplar ID</label>
+            <input asp-for="EjemplarId" type="number" class="form-control" value="2" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label font-weight-bold">Fecha Préstamo</label>
+            <input asp-for="FechaPrestamo" type="datetime-local" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label font-weight-bold">Fecha Devolución Esperada</label>
+            <input asp-for="FechaDevolucionPactada" type="datetime-local" class="form-control" value="@DateTime.Now.AddDays(7).ToString("yyyy-MM-ddTHH:mm")" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label font-weight-bold">Estado</label>
+            <input asp-for="EstadoPrestamo" class="form-control" value="Activo" required />
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary px-4 me-2">Crear</button>
+            <a asp-action="Index" class="btn btn-secondary px-4">Cancelar</a>
+        </div>
+    </form>
+</div>

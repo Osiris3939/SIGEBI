@@ -1,0 +1,33 @@
+@model SIGEBI.Application.DTOs.NotificacionDto
+@{
+    ViewData["Title"] = "Detalles de la Notificación";
+}
+
+<h3 class="mb-4">Detalles de la Notificación</h3>
+
+<div class="card card-custom p-4 col-md-6">
+    <dl class="row mb-0">
+        <dt class="col-sm-4 text-muted">ID</dt>
+        <dd class="col-sm-8 fw-bold">@Model.Id</dd>
+
+        <dt class="col-sm-4 text-muted">Usuario ID</dt>
+        <dd class="col-sm-8">@Model.UsuarioId</dd>
+
+        <dt class="col-sm-4 text-muted">Tipo</dt>
+        <dd class="col-sm-8">Recordatorio</dd>
+
+        <dt class="col-sm-4 text-muted">Mensaje</dt>
+        <dd class="col-sm-8">@Model.Mensaje</dd>
+
+        <dt class="col-sm-4 text-muted">Enviado En</dt>
+        <dd class="col-sm-8">@Model.FechaEnvio.ToString("g")</dd>
+
+        <dt class="col-sm-4 text-muted">Canal</dt>
+        <dd class="col-sm-8">Email</dd>
+    </dl>
+
+    <div class="mt-4">
+        <a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-primary btn-sm px-3 me-2">Editar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm px-3">Volver al listado</a>
+    </div>
+</div>

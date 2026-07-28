@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Página de Inicio";
+}
+
+<div class="text-center py-5">
+    <h1 class="display-5 fw-bold text-dark mb-2">Bienvenido al SIGEBI</h1>
+    <p class="lead text-secondary mb-5">Sistema de Gestión de Bibliotecas Institucional</p>
+
+    <div class="row g-4 justify-content-center">
+        <!-- Card 1: Usuarios -->
+        <div class="col-md-4 col-lg-2">
+            <div class="card card-custom h-100 p-3 text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold">Usuarios</h5>
+                    <p class="card-text text-muted small">Gestión de usuarios</p>
+                    <a asp-controller="Usuarios" asp-action="Index" class="btn btn-outline-primary btn-sm mt-3">Gestión de usuarios</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Catálogo -->
+        <div class="col-md-4 col-lg-2">
+            <div class="card card-custom h-100 p-3 text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold">Catálogo</h5>
+                    <p class="card-text text-muted small">Gestión de recursos</p>
+                    <a asp-controller="Recursos" asp-action="Index" class="btn btn-outline-primary btn-sm mt-3">Gestión de recursos</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Préstamos -->
+        <div class="col-md-4 col-lg-2">
+            <div class="card card-custom h-100 p-3 text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold">Préstamos</h5>
+                    <p class="card-text text-muted small">Gestión de préstamos</p>
+                    <a asp-controller="Prestamos" asp-action="Index" class="btn btn-outline-primary btn-sm mt-3">Gestión de préstamos</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4: Penalizaciones -->
+        <div class="col-md-4 col-lg-2">
+            <div class="card card-custom h-100 p-3 text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold">Penalizaciones</h5>
+                    <p class="card-text text-muted small">Gestión de penalizaciones</p>
+                    <a asp-controller="Penalizaciones" asp-action="Index" class="btn btn-outline-primary btn-sm mt-3">Gestión de penalizaciones</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5: Notificaciones -->
+        <div class="col-md-4 col-lg-2">
+            <div class="card card-custom h-100 p-3 text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title fw-bold">Notificaciones</h5>
+                    <p class="card-text text-muted small">Gestión de notificaciones</p>
+                    <a asp-controller="Notificaciones" asp-action="Index" class="btn btn-outline-primary btn-sm mt-3">Gestión de notificaciones</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

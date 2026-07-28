@@ -1,0 +1,30 @@
+@model SIGEBI.Application.DTOs.UsuarioDto
+@{
+    ViewData["Title"] = "Detalles del Usuario";
+}
+
+<h3 class="mb-4">Detalles del Usuario</h3>
+
+<div class="card card-custom p-4 col-md-6">
+    <dl class="row mb-0">
+        <dt class="col-sm-4 text-muted">ID</dt>
+        <dd class="col-sm-8 fw-bold">@Model.Id</dd>
+
+        <dt class="col-sm-4 text-muted">Nombre Completo</dt>
+        <dd class="col-sm-8">@Model.NombreCompleto</dd>
+
+        <dt class="col-sm-4 text-muted">Email</dt>
+        <dd class="col-sm-8">@Model.Correo</dd>
+
+        <dt class="col-sm-4 text-muted">Estado</dt>
+        <dd class="col-sm-8"><span class="badge bg-success">Activo</span></dd>
+
+        <dt class="col-sm-4 text-muted">Rol ID</dt>
+        <dd class="col-sm-8">@Model.RolUsuarioId</dd>
+    </dl>
+
+    <div class="mt-4">
+        <a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-primary btn-sm px-3 me-2">Editar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm px-3">Volver al listado</a>
+    </div>
+</div>

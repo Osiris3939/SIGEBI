@@ -1,0 +1,71 @@
+@model IEnumerable<SIGEBI.Application.DTOs.UsuarioDto>
+@{
+    ViewData["Title"] = "Listado de Usuarios";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Listado de Usuarios</h2>
+</div>
+
+<div class="mb-3">
+    <a asp-action="Crear" class="btn btn-outline-primary btn-sm">Agregar Nuevo</a>
+</div>
+
+<div class="card card-custom p-3">
+    <table class="table table-hover align-middle table-custom mb-0">
+        <thead>
+            <tr>
+                <th>USUARIOID</th>
+                <th>NOMBRECOMPLETO</th>
+                <th>EMAIL</th>
+                <th>ESTAACTIVO</th>
+                <th>ROLID</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.NombreCompleto</td>
+                    <td>@item.Correo</td>
+                    <td><span class="badge bg-success">Activo</span></td>
+                    <td>@item.RolUsuarioId</td>
+                    <td>
+                        <a asp-action="Editar" asp-route-id="@item.Id" class="btn-action text-primary">Editar</a> |
+                        <a asp-action="Detalles" asp-route-id="@item.Id" class="btn-action text-primary">Detalles</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>1</td>
+                <td>David Peguero Santana</td>
+                <td>david00817@gmail.com</td>
+                <td><span class="badge bg-success">Activo</span></td>
+                <td>2</td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="1" class="btn-action text-primary">Editar</a> |
+                    <a asp-action="Detalles" asp-route-id="1" class="btn-action text-primary">Detalles</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>David Martínez Pérez</td>
+                <td>david1234@gmail.com</td>
+                <td><span class="badge bg-success">Activo</span></td>
+                <td>2</td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="2" class="btn-action text-primary">Editar</a> |
+                    <a asp-action="Detalles" asp-route-id="2" class="btn-action text-primary">Detalles</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

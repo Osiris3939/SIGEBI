@@ -1,0 +1,33 @@
+@model SIGEBI.Application.DTOs.RecursoBibliograficoDto
+@{
+    ViewData["Title"] = "Detalles del Recurso";
+}
+
+<h3 class="mb-4">Detalles del Recurso</h3>
+
+<div class="card card-custom p-4 col-md-6">
+    <dl class="row mb-0">
+        <dt class="col-sm-4 text-muted">ID</dt>
+        <dd class="col-sm-8 fw-bold">@Model.Id</dd>
+
+        <dt class="col-sm-4 text-muted">Título</dt>
+        <dd class="col-sm-8">@Model.Titulo</dd>
+
+        <dt class="col-sm-4 text-muted">Autor</dt>
+        <dd class="col-sm-8">@Model.Autor</dd>
+
+        <dt class="col-sm-4 text-muted">Editorial</dt>
+        <dd class="col-sm-8">@Model.Editorial</dd>
+
+        <dt class="col-sm-4 text-muted">Año Publicación</dt>
+        <dd class="col-sm-8">@Model.AnioPublicacion</dd>
+
+        <dt class="col-sm-4 text-muted">Categoría ID</dt>
+        <dd class="col-sm-8">@Model.CategoriaId</dd>
+    </dl>
+
+    <div class="mt-4">
+        <a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-primary btn-sm px-3 me-2">Editar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm px-3">Volver al listado</a>
+    </div>
+</div>

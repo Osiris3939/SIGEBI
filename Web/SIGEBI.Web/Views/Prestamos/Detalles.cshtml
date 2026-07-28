@@ -1,0 +1,33 @@
+@model SIGEBI.Application.DTOs.PrestamoDto
+@{
+    ViewData["Title"] = "Detalles del Préstamo";
+}
+
+<h3 class="mb-4">Detalles del Préstamo</h3>
+
+<div class="card card-custom p-4 col-md-6">
+    <dl class="row mb-0">
+        <dt class="col-sm-5 text-muted">ID</dt>
+        <dd class="col-sm-7 fw-bold">@Model.Id</dd>
+
+        <dt class="col-sm-5 text-muted">Usuario ID</dt>
+        <dd class="col-sm-7">@Model.UsuarioId</dd>
+
+        <dt class="col-sm-5 text-muted">Ejemplar ID</dt>
+        <dd class="col-sm-7">@Model.EjemplarId</dd>
+
+        <dt class="col-sm-5 text-muted">Fecha Préstamo</dt>
+        <dd class="col-sm-7">@Model.FechaPrestamo.ToString("g")</dd>
+
+        <dt class="col-sm-5 text-muted">Fecha Devolución Esperada</dt>
+        <dd class="col-sm-7">@Model.FechaDevolucionPactada.ToString("g")</dd>
+
+        <dt class="col-sm-5 text-muted">Estado</dt>
+        <dd class="col-sm-7"><span class="badge bg-primary">@Model.EstadoPrestamo</span></dd>
+    </dl>
+
+    <div class="mt-4">
+        <a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-primary btn-sm px-3 me-2">Editar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm px-3">Volver al listado</a>
+    </div>
+</div>
