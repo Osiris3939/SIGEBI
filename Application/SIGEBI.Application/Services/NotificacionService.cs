@@ -75,7 +75,7 @@ namespace SIGEBI.Application.Services
                 await _notificacionRepository.AddAsync(notificacion);
 
                 // Abstraccion y Polimorfismo: Enviar via Email y SMS mediante CompositeNotificationSenderService
-                await _notificationSender.SendNotificationAsync("usuario@itla.edu.do", dto.Mensaje);
+                await _notificationSender.SendNotificationAsync("usuario@itla.edu.do", "Notificacion SIGEBI", dto?.Mensaje ?? "Aviso institucional");
 
                 _logger.LogInformation($"Notificacion registrada y enviada exitosamente via correo/SMS ID: {notificacion.Id}");
                 return new OperationResult { Success = true, Message = "Notificacion registrada y enviada exitosamente." };

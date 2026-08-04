@@ -1,23 +1,39 @@
+using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using SIGEBI.IOC;
-using SIGEBI.Persistence.Context;
+using Microsoft.Extensions.Hosting;
+using SIGEBI.Application.Interfaces;
+using SIGEBI.Domain.Services;
+using SIGEBI.Infrastructure.Logging;
+using SIGEBI.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Agregar servicios de MVC (Controladores y Vistas)
 builder.Services.AddControllersWithViews();
 
-// Registrar dependencias del sistema SIGEBI
-builder.Services.AddSIGEBIServices(builder.Configuration);
+// Registrar Logger Polimorfico para la capa de Presentación
+builder.Services.AddSingleton<ConsoleLoggerService>();
+builder.Services.AddSingleton<ILoggerService>(sp => sp.GetRequiredService<ConsoleLoggerService>());
+
+// Configurar HttpClientFactory para el consumo desacoplado de la Web API (RESTful Backend)
+builder.Services.AddHttpClient("SIGEBI_API", client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["ApiSettings:BaseUrl"] ?? "http://localhost:5029/");
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
+
+// Registrar Servicio Base de Consumo HTTP
+builder.Services.AddScoped<IApiClientService, ApiClientService>();
+
+// Registrar Servicios de Consumo de API por Módulo (Desacoplados de la lógica interna)
+builder.Services.AddScoped<IUsuarioService, UsuarioApiConsumerService>();
+builder.Services.AddScoped<IRecursoBibliograficoService, RecursoApiConsumerService>();
+builder.Services.AddScoped<IPrestamoService, PrestamoApiConsumerService>();
+builder.Services.AddScoped<IPenalizacionService, PenalizacionApiConsumerService>();
+builder.Services.AddScoped<INotificacionService, NotificacionApiConsumerService>();
 
 var app = builder.Build();
-
-// Inicializar y sembrar datos de prueba en la base de datos (Seeder)
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<SIGEBIContext>();
-    SIGEBIDbSeeder.Initialize(context);
-}
 
 if (!app.Environment.IsDevelopment())
 {
