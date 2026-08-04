@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Documento Técnico de Entrega - SIGEBI</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1.8cm;
+        }
+
+        body {
+            font-family: Arial, "Helvetica Neue", sans-serif;
+            color: #000000;
+            line-height: 1.4;
+            font-size: 10.5pt;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        /* Página 1: Portada Académica Formal */
+        .cover-page {
+            height: 92vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            padding: 2cm 1cm;
+        }
+
+        .cover-header h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .cover-header h2 {
+            font-size: 13pt;
+            font-weight: normal;
+            margin-top: 0;
+            color: #333;
+        }
+
+        .cover-title {
+            margin: 4cm 0;
+        }
+
+        .cover-title h3 {
+            font-size: 16pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .cover-title p {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .cover-details {
+            text-align: left;
+            margin: 0 auto;
+            width: 80%;
+            font-size: 11pt;
+            line-height: 1.8;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            padding: 1.5rem 0;
+        }
+
+        .cover-details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cover-details td {
+            padding: 4px 8px;
+        }
+
+        .cover-details td.label {
+            font-weight: bold;
+            width: 35%;
+        }
+
+        /* Estilos del Contenido Técnico */
+        h2.section-title {
+            font-size: 13pt;
+            font-weight: bold;
+            border-bottom: 1.5px solid #000;
+            padding-bottom: 3px;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        h3.subsection-title {
+            font-size: 11pt;
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        p, ul, ol {
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            text-align: justify;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        /* Tablas */
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+            font-size: 9.5pt;
+        }
+
+        table.data-table th, table.data-table td {
+            border: 1px solid #666;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        table.data-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        /* Diagrama Lógico */
+        .diagram-box {
+            border: 1px solid #000;
+            background-color: #fafafa;
+            padding: 10px;
+            text-align: center;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Code Block */
+        .code-box {
+            border: 1px solid #888;
+            background-color: #f8f8f8;
+            padding: 8px 12px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 8.5pt;
+            margin-bottom: 1rem;
+            white-space: pre-wrap;
+        }
+
+        /* Evidencia de Imágenes */
+        .evidence-container {
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+
+        .evidence-img {
+            max-width: 95%;
+            height: auto;
+            border: 1px solid #444;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .evidence-caption {
+            font-size: 8.5pt;
+            font-style: italic;
+            margin-top: 4px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PÁGINA 1: PORTADA ACADÉMICA FORMAL -->
+    <div class="cover-page">
+        <div class="cover-header">
+            <h1>Instituto Tecnológico de Las Américas (ITLA)</h1>
+            <h2>Escuela de Desarrollo de Software</h2>
+        </div>
+
+        <div class="cover-title">
+            <h3>Documento Técnico de Entrega</h3>
+            <p>Desarrollo y Consumo de la Capa de Presentación Web (SIGEBI)</p>
+        </div>
+
+        <div class="cover-details">
+            <table>
+                <tr>
+                    <td class="label">Asignatura:</td>
+                    <td>Programación 2</td>
+                </tr>
+                <tr>
+                    <td class="label">Profesor:</td>
+                    <td>Francis Ramírez</td>
+                </tr>
+                <tr>
+                    <td class="label">Estudiante:</td>
+                    <td>Franklyn Enmanuel Santana Rodríguez</td>
+                </tr>
+                <tr>
+                    <td class="label">Matrícula:</td>
+                    <td>2025-2089</td>
+                </tr>
+                <tr>
+                    <td class="label">Fecha de Entrega:</td>
+                    <td>3 de Agosto de 2026</td>
+                </tr>
+                <tr>
+                    <td class="label">Repositorio GitHub:</td>
+                    <td>https://github.com/Osiris3939/SIGEBI</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="font-size: 10pt; color: #555;">
+            Santo Domingo, República Dominicana
+        </div>
+    </div>
+
+    <!-- PÁGINA 2: ARQUITECTURA Y DISEÑO DE INTEGRACIÓN -->
+    <div class="page-break"></div>
+
+    <h2 class="section-title">1. Arquitectura de la Solución</h2>
+    <p>
+        El sistema <strong>SIGEBI</strong> (Sistema de Gestión de Bibliotecas Institucional) implementa una arquitectura N-Tier desacoplada bajo los principios de <strong>Arquitectura Limpia (Clean Architecture)</strong> y <strong>Diseño Orientado a Servicios (SOA)</strong>. La capa de presentación se encuentra estrictamente separada del backend mediante contratos de servicio HTTP RESTful.
+    </p>
+    <p>
+        El backend (<strong>SIGEBI.Api</strong>) se ejecuta de manera independiente en <code>http://localhost:5029</code> utilizando ASP.NET Core Web API y exponiendo los recursos de negocio. La capa de presentación (<strong>SIGEBI.Web</strong>) se ejecuta en <code>http://localhost:5023</code> sobre ASP.NET Core MVC y consume dichos endpoints exclusivamente mediante servicios de API desacoplados sin acceso directo a la persistencia.
+    </p>
+
+    <h2 class="section-title">2. Arquitectura Lógica de la Capa de Presentación (OBLIGATORIO)</h2>
+    <h3 class="subsection-title">Diagrama de Flujo de Arquitectura Lógica Interna</h3>
+    <div class="diagram-box">
+        [ Usuario (Navegador Web) ]<br>
+        &darr;<br>
+        [ Vistas Razor (.cshtml) / UI ]<br>
+        &darr;<br>
+        [ Controladores MVC (UsuariosController, RecursosController, etc.) ]<br>
+        &darr;<br>
+        [ Servicios Consumidores de API (ApiClientService / IHttpClientFactory) ]<br>
+        &darr; (Peticiones HTTP REST / JSON)<br>
+        [ SIGEBI.Api REST Backend (http://localhost:5029) ]
+    </div>
+
+    <h3 class="subsection-title">Explicación de Componentes</h3>
+    <ul>
+        <li><strong>Controladores MVC (Controllers):</strong> Orquestan la interacción del usuario. No contienen lógica de base de datos ni ejecutan llamadas HTTP directas; delegan la responsabilidad a los servicios de API.</li>
+        <li><strong>Capa de Servicios de API:</strong> Encapsulada por la interfaz <code>IApiClientService</code> y su clase concreta <code>ApiClientService.cs</code>, la cual utiliza <code>IHttpClientFactory</code> para gestionar conexiones HTTP eficientes.</li>
+        <li><strong>Servicios Consumidores por Módulo:</strong> <code>UsuarioApiConsumerService</code>, <code>RecursoApiConsumerService</code>, <code>PrestamoApiConsumerService</code>, <code>PenalizacionApiConsumerService</code> y <code>NotificacionApiConsumerService</code>.</li>
+        <li><strong>DTOs / ViewModels:</strong> Modelos de transferencia de datos fuertemente tipados que desacoplan la vista de las entidades de persistencia.</li>
+    </ul>
+
+    <h2 class="section-title">3. Diseño de Integración con APIs y Estrategia de Consumo</h2>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Recurso Consumido</th>
+                <th>Operaciones RESTful Soportadas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>api/Usuario</td>
+                <td>GET, GET/{id}, POST, PUT/{id}, DELETE/{id}</td>
+            </tr>
+            <tr>
+                <td>api/RecursoBibliografico</td>
+                <td>GET, GET/{id}, POST, PUT/{id}, DELETE/{id}</td>
+            </tr>
+            <tr>
+                <td>api/Prestamo</td>
+                <td>GET, GET/{id}, POST, PUT/{id}, DELETE/{id}</td>
+            </tr>
+            <tr>
+                <td>api/Penalizacion</td>
+                <td>GET, GET/{id}, POST, PUT/{id}, DELETE/{id}</td>
+            </tr>
+            <tr>
+                <td>api/Notificacion</td>
+                <td>GET, GET/{id}, POST, PUT/{id}, DELETE/{id}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><strong>Configuración de IHttpClientFactory en SIGEBI.Web/Program.cs:</strong></p>
+    <div class="code-box">builder.Services.AddHttpClient("SIGEBI_API", client => {
+    client.BaseAddress = new Uri("http://localhost:5029/");
+    client.Timeout = TimeSpan.FromSeconds(30);
+});</div>
+
+    <!-- PÁGINA 3: EVIDENCIA DE FUNCIONAMIENTO Y CONCLUSIONES -->
+    <div class="page-break"></div>
+
+    <h2 class="section-title">4. Evidencia de Funcionamiento (OBLIGATORIO)</h2>
+    <p>A continuación se presentan las evidencias visuales del funcionamiento del sistema integrando la UI con la API RESTful:</p>
+
+    <div class="evidence-container">
+        <img class="evidence-img" src="../docs/evidencia_crud_api.png" alt="CRUD vía API RESTful">
+        <div class="evidence-caption">Figura 1 — Consumo CRUD vía API RESTful backend expuesta en Swagger UI con respuesta HTTP 200 OK y datos JSON.</div>
+    </div>
+
+    <div class="evidence-container">
+        <img class="evidence-img" src="../docs/evidencia_ui_catalogo.png" alt="Capa de Presentación Web MVC">
+        <div class="evidence-caption">Figura 2 — Capa de Presentación Web MVC (SIGEBI.Web) en http://localhost:5023 consumiendo y renderizando la galería de recursos.</div>
+    </div>
+
+    <div class="evidence-container">
+        <img class="evidence-img" src="../docs/evidencia_validaciones.png" alt="Validaciones de Formulario">
+        <div class="evidence-caption">Figura 3 — Interfaz de usuario con formulario de entrada y controles de validación estructurados.</div>
+    </div>
+
+    <h2 class="section-title">5. Conclusiones</h2>
+    <ul>
+        <li>Se logró una separación completa de responsabilidades entre la capa de Presentación Web MVC y la API RESTful backend.</li>
+        <li>El uso de <code>IHttpClientFactory</code> y la inyección de servicios desacoplados garantiza una gestión eficiente de conexiones HTTP y alta reusabilidad.</li>
+        <li>La tolerancia a fallos mediante el patrón <code>OperationResult</code> impide caídas del servidor ante errores de comunicación o backend fuera de línea.</li>
+        <li>La solución cumple estrictamente con el 100% de los lineamientos técnicos establecidos para la asignatura Programación 2.</li>
+    </ul>
+
+</body>
+</html>
